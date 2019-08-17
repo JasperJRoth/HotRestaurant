@@ -16,7 +16,7 @@
     <script src="https://kit.fontawesome.com/be7411a50d.js"></script>
 
     <!-- Custom Css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/style">
 </head>
     <body>
         <main class="container">
@@ -24,13 +24,27 @@
                 <div class="section"></div>
                 <h1><i class="fab fa-hotjar"></i> Hot Restaurant</h1>
                 <div class="divider container grey"></div>
-                <h4>Book your seat before they're all gone!</h4>
+                <h4>Current Reservations and Waiting List</h4>
                 <div class="section"></div>
                 <div>
-                    <button class="btn blue"><i class="fas fa-table"></i> View Tables</button>
-                    <button class="btn red"><i class="fas fa-user-clock"></i> Make Reservation</button>
+                    <a href="/reserve"><button class="btn red"><i class="fas fa-user-clock"></i> Make Reservation</button></a>
+                    <a href="/"><button class="btn black"><i class="fas fa-user-clock"></i> Home</button></a>
                 </div>
                 <div class="section"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Current Reservations</span>
+                    <div id="current-reservations"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Waiting List</span>
+                    <div id="wait-list"></div>
+                </div>
             </div>
         </main>
 
@@ -39,10 +53,13 @@
 
             </div>
         </footer>
-    </body>
 
-    <!-- Materialize -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="/js/view"></script>
+        
+    
+        <!-- Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="/js/view"></script>        
+    </body>
+    
 </html>
