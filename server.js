@@ -64,12 +64,13 @@ app.get("/checkout/:id", function (req, res) {
         }
     }
     if (idFound) {
-        res.json({ success: false, message: "ID not found!" });
-        console.log("Error");
-    }
-    else {
         res.json({ sucess: true, message: "The checkout was made it!" });
         console.log("Success:");
+    }
+    else {
+        res.json({ success: false, message: "ID not found!" });
+        console.log("Error");
+
     }
     
 });
