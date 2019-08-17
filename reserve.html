@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/be7411a50d.js"></script>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="css/style">
+</head>
+    <body>
+        <main class="container">
+            <div class="card center grey lighten-3">
+                <div class="card-content">
+                    <div class="section"></div>
+                    <h1><i class="fab fa-hotjar"></i> Hot Restaurant</h1>
+                    <div class="divider container grey"></div>
+                    <h4>We only have 5 tables, book your seat before they're all gone!</h4>
+                    <div class="section"></div>
+                    <div>
+                        <a href="/tables"><button class="btn blue"><i class="fas fa-table"></i> View Tables</button></a>
+                        <a href="/"><button class="btn white"><i class="fas fa-home black-text"></i></button></a>
+                    </div>
+                    <div class="section"></div>
+                </div>
+            </div>
+
+            <div class="card grey lighten-3">
+                <div class="card-content">
+                    <h4>Make a Reservation</h4>
+                    <div class="divider grey"></div>
+                    <div class="input-field">
+                        <input id="input_name" type="text" class="validate">
+                        <label for="input_name">Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="input_phone" type="tel" class="validate">
+                        <label for="input_phone">Phone Number</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="input_email" type="email" class="validate">
+                        <label for="input_email">Email</label>
+                    </div>
+                    <button id="reserve_submit" class="btn blue waves-effect">Submit</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="page-footer grey lighten-2 valign-wrapper" style="padding-bottom: 20px">
+            <div class="container">
+                <a href="/api/tables">API Table Link</a>
+                <span class="black-text">&nbsp|&nbsp</span>
+                <a href="/api/waitlist">API Wait List</a>
+            </div>
+        </footer>
+    </body>
+
+    <!-- Reservation adding code -->
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $("#reserve_submit").on("click", function(event) {
+          event.preventDefault();
+          var newReservation = {
+            name: $("#input_name").val().trim(),
+            phone: $("#input_phone").val().trim(),
+            email: $("#input_email").val().trim()
+          };
+    
+          // Question: What does this code do??
+          $.post("/reserve", newReservation)
+            .then(function(data) {
+              alert("Adding reservation...");
+              window.location.href = "/";
+            });
+        });
+      </script>
+
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>

@@ -2,20 +2,38 @@ var $reservations = $("#current-reservations");
 var $waitList = $("#wait-list");
 
 $.get("/api/waitlist", data => {
-    for (i in data) {
-        var $p = $("<p>").text(`${i} - ${data[i].name} - ${data[i].id}`);
-        $waitList.append($p);
-        console.log("enter");
-    }
-    console.log("aui");
+    addEntry(data, $waitList);
 });
 
 $.get("/api/tables", data => {
+    addEntry(data, $reservations);
+});
+
+function addEntry(data, parent){
     for (i in data) {
-        var $p = $("<p>").text(`${i + 1} - ${data[i].name} - ${data[i].phone} - ${data[i].email}`);
-        $reservations.append($p);
+        var $check = $(`<i class="far fa-check-square"></i>`);
+
+        $check.addClass("right");
+        $check.css("display", "none");
+        $check.data("id", data[i].id);
+
+        var $p = $("<p>").html(`${i + 1} - ${data[i].name} - ${data[i].phone} - ${data[i].email}`);
+
+        $p.hover(function(){
+            $(this).find("i").css("display", "block");
+        }, function(){
+            $(this).find("i").css("display", "none");
+        });
+
+        $check.on("click", function(){
+            $.get("/checkout/" + $(this).data("id")).then(function(res, err){
+                document.location.href = "/tables"
+            });
+        });
+
+        $p.append($check);
+        parent.append($p);
         console.log("enter");
     }
     console.log("aui");
-});
-
+}

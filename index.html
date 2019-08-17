@@ -21,23 +21,26 @@
     <body>
         <main class="container">
             <div class="card center grey lighten-3">
-                <div class="section"></div>
-                <h1><i class="fab fa-hotjar"></i> Hot Restaurant</h1>
-                <div class="divider container grey"></div>
-                <h4>Book your seat before they're all gone!</h4>
-                <div class="section"></div>
-                <div>
-                    <button class="btn blue"><i class="fas fa-table"></i> View Tables</button>
-                    <button class="btn red"><i class="fas fa-user-clock"></i> Make Reservation</button>
+                <div class="card-content">
+                    <div class="section"></div>
+                    <h1><i class="fab fa-hotjar"></i> Hot Restaurant</h1>
+                    <div class="divider container grey"></div>
+                    <h4>We only have 5 tables, book your seat before they're all gone!</h4>
+                    <div class="section"></div>
+                    <div>
+                        <a href="/tables"><button class="btn blue"><i class="fas fa-table"></i> View Tables</button></a>
+                        <a href="/reserve"><button class="btn red"><i class="fas fa-user-clock"></i> Make Reservation</button></a>
+                    </div>
+                    <div class="section"></div>
                 </div>
-                <div class="section"></div>
             </div>
         </main>
 
         <footer class="page-footer grey lighten-2 valign-wrapper" style="padding-bottom: 20px">
             <div class="container">
-                <a>API Table Link</a>
-                <a>API Wait List</a>
+                <a href="/api/tables">API Table Link</a>
+                <span class="black-text">&nbsp|&nbsp</span>
+                <a href="/api/waitlist">API Wait List</a>
             </div>
         </footer>
     </body>
