@@ -46,6 +46,31 @@ app.post("/reserve", function (req, res) {
     res.json(reservation);
 });
 
+app.get("/checkout/:id", function (req, res) {
+    var id = req.params.id.trim();
+    var idFound = false;
+
+    //removes the reserve from the tables and add the first reserve on the waiting list
+    for (i in tables) {
+        if (tables[i].id === id) {
+            tables.splice(i, 1);
+            if (waitList.length > 0) {
+                tables.push(waitList[0]);
+                waitList.splice(0, 1);
+            }
+            idFound = true;
+            break;
+        }
+    }
+    if (idFound) {
+        res.json({success: false, message: "ID not found!"})    
+    }
+    else {
+        res.json({sucess: true, message: "The checkout was made it!"})
+    }
+    
+});
+
 app.get("/api/tables", function(req, res){
     res.json(tables);
 });
@@ -53,6 +78,7 @@ app.get("/api/tables", function(req, res){
 app.get("/api/waitlist", function(req, res){
     res.json(waitList);
 });
+
 
 
 app.listen(8080);
