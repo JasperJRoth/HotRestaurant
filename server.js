@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const newId = require('uuid/v1');
 
+var PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -85,4 +86,6 @@ app.get("/api/waitlist", function(req, res){
 
 
 
-app.listen(8080);
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+});
