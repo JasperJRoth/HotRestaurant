@@ -26,10 +26,8 @@ function addEntry(data, parent){
         });
 
         $check.on("click", function(){
-            console.log("test");
             $.get("/checkout/" + $(this).data("id")).then(function(res, err){
-                console.log(res);
-                console.log(err);
+                document.location.href = "/tables"
             });
         });
 
