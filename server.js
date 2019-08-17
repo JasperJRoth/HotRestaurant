@@ -50,6 +50,7 @@ app.get("/checkout/:id", function (req, res) {
     var id = req.params.id.trim();
     var idFound = false;
 
+    console.log(id);
     //removes the reserve from the tables and add the first reserve on the waiting list
     for (i in tables) {
         if (tables[i].id === id) {
@@ -63,10 +64,12 @@ app.get("/checkout/:id", function (req, res) {
         }
     }
     if (idFound) {
-        res.json({success: false, message: "ID not found!"})    
+        res.json({ success: false, message: "ID not found!" });
+        console.log("Error");
     }
     else {
-        res.json({sucess: true, message: "The checkout was made it!"})
+        res.json({ sucess: true, message: "The checkout was made it!" });
+        console.log("Success:");
     }
     
 });

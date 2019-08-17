@@ -12,7 +12,7 @@ $.get("/api/waitlist", data => {
 
 $.get("/api/tables", data => {
     for (i in data) {
-        var $p = $("<p>").text(`${i + 1} - ${data[i].name} - ${data[i].phone} - ${data[i].email}`);
+        var $p = $("<p>").text(`${i.toNumber() + 1} - ${data[i].name} - ${data[i].phone} - ${data[i].email}`);
         $reservations.append($p);
         console.log("enter");
     }
