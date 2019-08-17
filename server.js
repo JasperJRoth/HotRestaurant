@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const newId = require('uuid/v1');
+
 
 const app = express();
 
@@ -27,6 +29,7 @@ app.get("/reserve", function(req, res){
 
 app.post("/reserve", function (req, res) {
     var reservation = req.body;
+    reservation.id = newId();
 
     if (tables.length < 5) {
         tables.push(reservation);   
